@@ -1,0 +1,4 @@
+# Ignorar instaladores y ejecutables
+*.exe
+*.msi
+.DS_Store
