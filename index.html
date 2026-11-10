@@ -8,20 +8,62 @@
 </head>
 <body>
 
-    <header>
-        <h1>Catálogo de Ropa Muhammad</h1>
-        <p>Selecciona una categoría o busca tu prenda</p>
-        <input type="text" id="buscador" placeholder="Buscar por nombre o ID (ej. CAM-BAS)...">
+    <header class="header">
+        <h1>Catálogo de Ropa Muhammed</h1>
+        <p>Selecciona tus prendas favoritas, agrégalas al carrito y envía tu pedido por WhatsApp</p>
+        
+        <div class="controles-busqueda">
+            <input type="text" id="buscador" placeholder="Buscar modelo o código..." onkeyup="filtrarProductos()">
+            <div class="filtros-categoria" id="filtros-categoria">
+                <button class="btn-cat activo" onclick="filtrarPorCategoria('todos', this)">Todos</button>
+                <button class="btn-cat" onclick="filtrarPorCategoria('camisas', this)">Camisas</button>
+                <button class="btn-cat" onclick="filtrarPorCategoria('pantalones', this)">Pantalones</button>
+                <button class="btn-cat" onclick="filtrarPorCategoria('vestidos', this)">Vestidos</button>
+                <button class="btn-cat" onclick="filtrarPorCategoria('zapatos', this)">Zapatos</button>
+            </div>
+        </div>
     </header>
 
-    <!-- Barra de Categorías -->
-    <nav id="menu-categorias" class="menu-categorias">
-        <!-- Los botones de categorías se generan aquí automáticamente -->
-    </nav>
-
-    <main>
-        <div id="catalogo-container" class="grid-productos"></div>
+    <main class="contenedor-catalogo" id="catalogo">
+        <!-- Las tarjetas se generan dinámicamente desde app.js -->
     </main>
+
+    <!-- Botón flotante del carrito en el lado derecho -->
+    <button class="btn-carrito-flotante" onclick="toggleCarrito()" title="Ver carrito de compras">
+        🛒 <span id="contador-carrito">0</span>
+    </button>
+
+    <!-- Fondo oscuro al abrir el carrito -->
+    <div id="overlay-carrito" class="overlay-carrito" onclick="toggleCarrito()"></div>
+
+    <!-- Panel lateral deslizable del carrito -->
+    <aside id="panel-carrito" class="panel-carrito">
+        <div class="carrito-header">
+            <h2>Tu Carrito</h2>
+            <button class="btn-cerrar-carrito" onclick="toggleCarrito()">&times;</button>
+        </div>
+        
+        <div id="lista-carrito" class="carrito-body">
+            <p class="carrito-vacio">Tu carrito está vacío.</p>
+        </div>
+
+        <div class="carrito-footer">
+            <div class="carrito-total">
+                <span>Total estimado:</span>
+                <strong id="total-carrito">$0.00</strong>
+            </div>
+            <button id="btn-enviar-whatsapp" class="btn-whatsapp-final" onclick="enviarPedidoWhatsApp()" disabled>
+                📲 Enviar pedido por WhatsApp
+            </button>
+            <button class="btn-vaciar" onclick="vaciarCarrito()">Vaciar carrito</button>
+        </div>
+    </aside>
+
+    <!-- Modal para hacer zoom a las imágenes -->
+    <div id="modal-zoom" class="modal" onclick="cerrarModal()">
+        <span class="cerrar-modal">&times;</span>
+        <img class="modal-contenido" id="img-ampliada" alt="Vista ampliada">
+    </div>
 
     <script src="app.js"></script>
 </body>
