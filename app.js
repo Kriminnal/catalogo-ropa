@@ -19,7 +19,7 @@ const productos = [
         categoria: "pantalones",
         precio: 22.00,
         colores: [
-            { nombre: "Azul Oscuro", id: "PAN-JEA-AZU", img: "img/PAN-JEA-AZU.jpg", stock: 8 },
+            { nombre: "Azul Oscuro", id: "PAN-JEA-AZU", img: "img/PAN-JEA-OSC.jpg", stock: 8 },
             { nombre: "Negro", id: "PAN-JEA-NEG", img: "img/PAN-JEA-NEG.jpg", stock: 3 }
         ]
     }
